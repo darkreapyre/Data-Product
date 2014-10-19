@@ -56,6 +56,8 @@ z <- to.period(df_xts, 'months')
 a <- to.monthly(df_xts)
 
 ## Convert to Time-Series and ensure the correct index is yearly, capture only the close
+## NOTE: it may be better to streamline the code by keeping the data in a ts object,
+## instead of converting it to xts, but is it possible to ctagorize by month in ts()?
 df_xts <- to.monthly(df_xts)
 timeSeries <- as.ts(df_xts[, 4], start = c(2009))
 fit <- auto.arima(timeSeries)
