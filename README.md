@@ -7,9 +7,9 @@ The the purpose of the App is to assist users to forcast the Bitcoin network dif
 
 The repository contains the following files:
 
-1. dataProductfinal.md - the report detailing the how the App works. (assignment/dataProductfinal.md)
-2. ui.R - the Shiny user interface. (code/finalcode/ui.R)
-3. server.R - the Shiny App code. (code/finalcode/server.R)
-4. dataProductfinal.html - the HTML file hosted for public access to the App. (assignment/dataProductfinal.html)
+1. **dataProductfinal.md** - the report detailing the how the App works. *(assignment/dataProductfinal.md)*
+2. **ui.R** - the Shiny user interface. *(code/finalcode/ui.R)*
+3. **server.R** - the Shiny App code. *(code/finalcode/server.R)*
+4. **dataProductfinal.html** - the HTML file hosted for public access to the App. *(assignment/dataProductfinal.html)*
 
 The final App is availble here: <INSERT FINAL LINK> 
