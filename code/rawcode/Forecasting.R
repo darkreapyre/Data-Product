@@ -2,6 +2,7 @@ library(shiny)
 library(ggplot2)
 library(xts)
 library(forecast)
+library(lubridate)
 
 
 ###Option 1:
@@ -45,20 +46,20 @@ plot(FCAST)
 ## Remove duplicate values 
 df <- unique(df)
 ## Create a new xts data.frame
-df_xts <- xts(df$Difficulty, df$Date)
+dfxts <- xts(df$Difficulty, df$Date)
 ## If necessary subset the data from 2013-01-01 to present
-x <- df_xts['2013-01-01/']
+##x <- df_xts['2013-01-01/']
 ## Extract the last week's data
-y <- last(df_xts, '1 week')
+##y <- last(df_xts, '1 week')
 ## Change the periodicity to months
-z <- to.period(df_xts, 'months')
+##z <- to.period(df_xts, 'months')
 ## change the index from the date to whole months (useful for monthly forecasting)
-a <- to.monthly(df_xts)
+##a <- to.monthly(df_xts)
 
 ## Convert to Time-Series and ensure the correct index is yearly, capture only the close
 ## NOTE: it may be better to streamline the code by keeping the data in a ts object,
 ## instead of converting it to xts, but is it possible to ctagorize by month in ts()?
-df_xts <- to.monthly(df_xts)
+dfxts <- to.monthly(df_xts)
 timeSeries <- as.ts(df_xts[, 4], start = c(2009))
 fit <- auto.arima(timeSeries)
 fcast <- forecast(fit)
