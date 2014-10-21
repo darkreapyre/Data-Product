@@ -46,7 +46,7 @@ plot(FCAST)
 ## Remove duplicate values 
 df <- unique(df)
 ## Create a new xts data.frame
-dfxts <- xts(df$Difficulty, df$Date)
+dfXts <- xts(df$Difficulty, df$Date)
 ## If necessary subset the data from 2013-01-01 to present
 ##x <- df_xts['2013-01-01/']
 ## Extract the last week's data
@@ -59,8 +59,8 @@ dfxts <- xts(df$Difficulty, df$Date)
 ## Convert to Time-Series and ensure the correct index is yearly, capture only the close
 ## NOTE: it may be better to streamline the code by keeping the data in a ts object,
 ## instead of converting it to xts, but is it possible to ctagorize by month in ts()?
-dfxts <- to.monthly(df_xts)
-timeSeries <- as.ts(df_xts[, 4], start = c(2009))
+dfXts <- to.monthly(dfXts)
+timeSeries <- as.ts(dfXts[, 4], start = c(2009))
 fit <- auto.arima(timeSeries)
 fcast <- forecast(fit)
 plot(fcast)
