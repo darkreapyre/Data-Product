@@ -8,8 +8,8 @@ The the purpose of the App is to assist users to estimate the future Bitcoin net
 The repository contains the following files:
 
 1. **dataProductfinal.Rmd** - the report detailing the how the App works. *(dataProductfinal.Rmd)*
-2. **ui.R** - the Shiny user interface. *(code/finalcode/ui.R)*
-3. **server.R** - the Shiny App code. *(code/finalcode/server.R)*
-4. **dataProductfinal.html** - the HTML file hosted for public access to the App. *(dataProductfinal.html)*
+2. **ui.R** - the Shiny user interface. *(ui.R)*
+3. **server.R** - the Shiny App code. *(server.R)*
+4. **About.html** - the HTML file detailing how the App works and hosted with the App for public access. *(www/about.html)*
 
 The final App is available here: **<INSERT FINAL LINK>** 

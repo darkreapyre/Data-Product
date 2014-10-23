@@ -15,7 +15,8 @@ shinyUI(pageWithSidebar(
                             choices = list("kH/s", "MH/s", "GH/s", "TH/s"),
                             selected = "kH/s"),
                 ## Submit button to server.R
-                submitButton("Submit")
+                submitButton("Submit"),
+                p("Documentation:", a("About", href = "About.html"))
                 ),
         mainPanel(
                 tabsetPanel(
