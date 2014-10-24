@@ -10,6 +10,7 @@ The repository contains the following files:
 1. **dataProductfinal.Rmd** - the report detailing the how the App works. *(dataProductfinal.Rmd)*
 2. **ui.R** - the Shiny user interface. *(ui.R)*
 3. **server.R** - the Shiny App code. *(server.R)*
-4. **About.html** - the HTML file detailing how the App works and hosted with the App for public access. *(www/about.html)*
+4. **About.html** - the HTML file detailing how the App works and hosted with the App for public access. *(www/about.html)*  
+5. **dataProductPresentation.Rpres** - the App Presentation hosted for public access. *(dataProductPresentation.Rpres)*
 
 The final App is available here: **<INSERT FINAL LINK>** 
