@@ -1,0 +1,67 @@
+Estimating Future Bitcoin Profit
+========================================================
+author: Trenton Potgieter
+date: 10/19/2014
+font-family: 'Helvetica'
+#autosize: true
+
+Introduction
+========================================================
+
+<small>Understanding just how difficult it is to discover the given number below the given target is the key to determining Bitcoin profitability.  
+
+Furthermore, the ability to estimate future mining profitability by predicting what the network difficulty will be is the scope of this presentation. The process of forecasting what the network difficulty will be and calculating the profitability is accomplished by means of the following steps:  
+
+- Download the data from the Network.  
+- Clean and format the data, by Date and Difficulty.  
+- Forcast the dicculty over the next 24 months.  
+- Plot the Forecast</small>
+
+Example Forecast of the Difficulty
+========================================================
+
+```{r, echo = FALSE}
+options(scipen = 10)
+library(xts)
+library(forecast)
+library(lubridate)
+
+## Pull the data straight from the website
+dt <- read.table("http://blockexplorer.com/q/nethash", header = FALSE,
+                 sep = ",", skip = 15)
+## Extract and convert the Date (in UTC) and Difficulty Value
+df <- as.data.frame(as.POSIXct(dt[, 2], origin = '1970-01-01'), format = "%Y/%m/%d")
+df[, 2] <- dt[, 5]
+names(df) <- c("Date", "Difficulty")
+df$Date <- as.Date(as.character(df$Date, format = "%Y-%m-%d"))
+
+## Remove duplicate values 
+df <- unique(df)
+## Create a new xts data.frame
+dfXts <- xts(df$Difficulty, df$Date)
+## Format to monthly and create the Automatic Forecast model
+dfXts <- to.monthly(dfXts)
+timeSeries <- as.ts(dfXts[, 4], start = c(2009))
+fit <- auto.arima(timeSeries)
+fcast <- forecast(fit)
+x <- as.data.frame(fcast)
+```
+
+```{r, echo = TRUE, height=4.5, width=10}
+head(x, 5)
+```
+
+Plotting the Difficulty Forecast
+========================================================
+
+```{r, echo = FALSE, fig.width=8, fig.height=4.5, dpi=300, out.width="9120px", height="1080px"}
+plot(fcast)
+```
+
+Shiny App
+========================================================
+class: illustration
+Screenshot of the shiny Web App that performs the Forecast.
+
+![App](screenshot.png)
+
