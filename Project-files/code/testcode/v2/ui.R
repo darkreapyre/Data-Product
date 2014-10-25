@@ -13,19 +13,20 @@ shinyUI(pageWithSidebar(
                 selectInput("prefix",
                             label = NULL,
                             choices = list("kH/s", "MH/s", "GH/s", "TH/s"),
-                            selected = "kH/s"),
+                            selected = "TH/s"),
                 ## Submit button to server.R
-                submitButton("Submit")
+                submitButton("Submit"),
+                p("Documentation:", a("About", href = "About.html"))
                 ),
         mainPanel(
                 tabsetPanel(
-                        ## Tab with the prediction results
-                        tabPanel("Results", dataTableOutput("Table")),
                         ## Tab with the plot of the Forecast object
                         tabPanel("Arima Plot", plotOutput("plot")),
                         ## Tab with the actual Forecast object
                         tabPanel("Arima Forecast",
-                                 dataTableOutput("Fcast"))
+                                 dataTableOutput("Fcast")),
+                        ## Tab with the prediction results
+                        tabPanel("Results", tableOutput("Table"))
                         )
                 )
         )
