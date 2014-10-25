@@ -13,4 +13,4 @@ The repository contains the following files:
 4. **About.html** - the HTML file detailing how the App works and hosted with the App for public access. *(www/about.html)*  
 5. **dataProductPresentation.Rpres** - the App Presentation hosted for public access. *(dataProductPresentation.Rpres)*
 
-The final App is available here: **http://https://trentonp.shinyapps.io/Data-Product/** 
+The final App is available here: **http://trentonp.shinyapps.io/Data-Product/** 
