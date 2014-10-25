@@ -3,7 +3,6 @@ Estimating Future Bitcoin Profit
 author: Trenton Potgieter
 date: 10/19/2014
 font-family: 'Helvetica'
-#autosize: true
 
 Introduction
 ========================================================
@@ -39,7 +38,7 @@ Mar 2015    72766109760 68884607605 76647611916 66829864481 78702355039
 Plotting the Difficulty Forecast
 ========================================================
 
-<img src="dataProductPresentation-figure/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="9120px" />
+<img src="dataProductPresentation-figure/unnamed-chunk-3.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="9120px" />
 
 Shiny App
 ========================================================

@@ -6,7 +6,7 @@ output: html_document
 ---
 ###App Overview
 
-This Shiny App estimates the amount of Bitcoins that wl be mined, based on forcasting what the Bitcoin Network difficuloty will be. To use the App, follow these steps.  
+This Shiny App estimates the amount of Bitcoins that will be mined, based on forcasting what the Bitcoin Network difficuloty will be. To use the App, follow these steps.  
 
 ####Using the App
 
@@ -16,11 +16,11 @@ This Shiny App estimates the amount of Bitcoins that wl be mined, based on forca
 
 After clicking __Submit__, the __Results__ tab displays the forcasted Network Dissiculty for next month, what the projected amount of Bitcoins mined (based on the forecasted Network Difficulty) for the month will be and the total amount of Bitcoins accrued for a two year period.  
 
+####Forecast Model Output
+To see the actual results of the Forecast Model's oputput, click o the __Arima Forecast__ tab.  
+
 ####Visualizing the Forecast
 To see a plot of the model forecast, click on the __Arima Plot__ tab.
-
-####Forecast Model Output
-To see the actual results of the Forecast Model's oputput, click o the __Arima Forecast__ tab.
 
 ###App Background
 
@@ -94,7 +94,7 @@ fcast <- forecast(fit)
 
 By using the auto.arima() to select the best Arima model, we get a forecast (by month) of the Network Difficulty for the next 24 months, as well as the 80% and 95% prediction intervals for those predictions.  
 
-```{r Results, echop = TRUE}
+```{r Results, echo = TRUE}
 ## Show Model output and plot
 fcast
 plot(fcast)
