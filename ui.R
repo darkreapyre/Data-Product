@@ -6,9 +6,9 @@ shinyUI(pageWithSidebar(
         ## side panel for the hasrate input
         sidebarPanel(
                 helpText("This app estimates the total amount of Bitcoins
-                         you will mine, based on your current hastrate."),
+                         you will mine, based on your current hashrate."),
                 ## hashrate input by user (must bre greater then 0)
-                numericInput("hrate", "Enter your current hasrate:", 0,
+                numericInput("hrate", "Enter your current hashrate:", 0,
                              min = 0),
                 selectInput("prefix",
                             label = NULL,

@@ -4,33 +4,34 @@ author: "Trenton Potgieter"
 date: "Sunday, October 19, 2014"
 output: html_document
 ---
+
 ###App Overview
 
-This Shiny App estimates the amount of Bitcoins that will be mined, based on forcasting what the Bitcoin Network difficuloty will be. To use the App, follow these steps.  
-
-####Using the App
-
-1. Enter the current Hash Rate produced by the mining hardware. (For Example 4.363).  
-2. Select wether the number entered is in __kilohashes per second__, __Megahashes per second__, __Gigahases per second__ or __Terahashes per second__.  
-3. Click the __Submit__ Button.
-
-After clicking __Submit__, the __Results__ tab displays the forcasted Network Dissiculty for next month, what the projected amount of Bitcoins mined (based on the forecasted Network Difficulty) for the month will be and the total amount of Bitcoins accrued for a two year period.  
+This Shiny App estimates the amount of Bitcoins that will be mined, based on forecasting what the Bitcoin Network difficulty will be.  
 
 ####Forecast Model Output
-To see the actual results of the Forecast Model's oputput, click o the __Arima Forecast__ tab.  
+After the App is first launched, the default data that is displayed is the output of the __Arima Forecast__. (See __App Background__ for further information on the Arima output).  
 
 ####Visualizing the Forecast
-To see a plot of the model forecast, click on the __Arima Plot__ tab.
+To see a plot of the model forecast, click on the __Arima Plot__ tab.  
+
+####Using the Calculator
+
+1. Enter the current Hashrate produced by the mining hardware. (For Example 4.363).  
+2. Select whether the number entered is in __kilohashes per second__, __Megahashes per second__, __Gigahashes per second__ or __Terahashes per second__.  
+3. Click the __Submit__ Button.
+
+After clicking __Submit__, the __Calculator__ tab displays the forcasted Network Difficulty for next 24 months and what the projected amount of Bitcoins (based on that forecasted Network Difficulty) earned for the month, will be.  
 
 ###App Background
 
 Bitcoin is software that tracks and verifies transactions on a public ledger over a peer-to-peer network. Operations and data associated with Bitcoin are decentralized, meaning they are not performed or stored in one single location. Instead, the Bitcoin network consists of computers across the world that automatically store and relay Bitcoin data to each other. The computers' owners voluntarily choose to use and run the Bitcoin software. Anyone can use and run Bitcoin software. Bitcoins are produced through a process called mining. Mining is the competitive use of computational power to calculate a number that falls within a certain range. The first miner to discover a number "target"[^one] that meets the criteria is rewarded with a set amount of brand new bitcoins (currently 25 bitcoins), the competition then repeats for the discovery of a new number[^two]. In other words, when the number in the block header is equal or lower than the "target", the block is accepted by the network and the process to create a new block begins.
 
-Understanding just how difficult[^three] it is to discover the given number below the given target is the key to determining profitability, or measure of success. More importantly is the ability to estimate future mining profitability by predicting what the network difficulty will be. This paper describes the process of forecasting what the network difficulty will be for a two year period and calculating how the profitability based on the current hashrate of the mining hardware.  
+Understanding just how difficult[^three] it is to discover the given number below the given target is the key to determining profitability, or measure of success. More importantly is the ability to estimate future mining profitability by predicting what the network difficulty will be. This paper describes the process of forecasting what the network difficulty will be for a two year period and calculating the profitability based on the current hashrate of the mining hardware.  
 
 ###Methods used in the Shiny App
 ####Data Collection
-The data used for working with the current and previously recorded Network statistics (including Difficulty) is downloaded directly using the R programming language[^four]. from the Bitcoin Network by using the Bitcoin Block Explorer website[^five] which is an open source web tool that allows a user to view information about the blocks, addresses, and transactions created by Bitcoin. 
+The data used for working with the current and previously recorded Network statistics (including Difficulty) is downloaded directly using the R programming language[^four] from the Bitcoin Network by using the Bitcoin Block Explorer website[^five], which is an open source web tool that allows users to view information about the blocks, addresses, and transactions created by Bitcoin. 
 
 ```{r Initialize, echo = TRUE}
 options(scipen = 10)
@@ -70,7 +71,7 @@ dfXts <- xts(df$Difficulty, df$Date)
 ```
 
 ####Time-Series Modeling
-To model the predicted forecast of the network difficulty, the Arima model is used. Using the auto.arima() function in R uses a variation of the Hyndman and Khandakar[^six] algorithm which combines unit root tests, minimization of the AICc and MLE to obtain an ARIMA model. The algorithm[^seven] follows these steps:  
+To model the predicted forecast of the network difficulty, the Arima model is used. Using the auto.arima() function in R uses a variation of the Hyndman and Khandakar[^six] algorithm, which combines unit root tests, minimization of the AICc and MLE to obtain an ARIMA model. The algorithm[^seven] follows these steps:  
 
 1. The number of differences d is determined using repeated KPSS tests.
 2. The values of __p__ and __q__ are then chosen by minimizing the AICc after differencing the data __d__ times. Rather than considering every possible combination of __p__ and __q__, the algorithm uses a stepwise search to traverse the model space.
@@ -94,7 +95,7 @@ fcast <- forecast(fit)
 
 By using the auto.arima() to select the best Arima model, we get a forecast (by month) of the Network Difficulty for the next 24 months, as well as the 80% and 95% prediction intervals for those predictions.  
 
-```{r Results, echo = TRUE}
+```{r plot, echo = FALSE}
 ## Show Model output and plot
 fcast
 plot(fcast)
@@ -160,7 +161,7 @@ for (i in 2:length(iForecast)) {
 
 Below is an example of the results using __4.363 TH/s__.
 
-```{r sample, echo = TRUE}
+```{r sample, echo = FALSE}
 Table
 
 ```
